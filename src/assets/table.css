@@ -1,9 +1,15 @@
 #plusBtn {
   border-radius: 20px;
+  font-size: 20px;
+  padding-top: 1px;
 }
 .input-group {
   margin-bottom: 5px;
 }
-#btnGroup button{
+#btnGroup button {
   margin-right: 3px;
+}
+
+#tableBtn {
+  padding: 3px;
 }

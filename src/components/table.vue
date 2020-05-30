@@ -10,20 +10,24 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item,i) in items" :key="i">
-          <th scope="row">{{item.name}}</th>
-          <td>{{item.c1}}</td>
-          <td>{{item.c2}}</td>
-          <td>{{item.c3}}</td>
+        <tr v-for="(item, i) in items" :key="i">
+          <th scope="row">{{ item.name }}</th>
+          <td>{{ item.c1 }}</td>
+          <td>{{ item.c2 }}</td>
+          <td>{{ item.c3 }}</td>
         </tr>
       </tbody>
     </table>
 
     <div>
-      <div class="col-md-1">
+      <div id="tableBtn">
         <button @click="toggleModal" id="plusBtn" class="btn btn-outline-dark" ref="btnToggle">
           <span class="glyphicon">&#x2b;</span>
         </button>
+
+        <span class="float-right">
+          <button type="button" class="btn btn-success">Convert</button>
+        </span>
       </div>
 
       <b-modal id="modal-1" title="Add Item" hide-footer>
@@ -36,21 +40,21 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{criterion.C1.name}}</span>
+            <span class="input-group-text">{{ criterion.C1.name }}</span>
           </div>
           <input type="text" class="form-control" v-model="prepareItem.c1" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{criterion.C2.name}}</span>
+            <span class="input-group-text">{{ criterion.C2.name }}</span>
           </div>
           <input type="text" class="form-control" v-model="prepareItem.c2" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{criterion.C3.name}}</span>
+            <span class="input-group-text">{{ criterion.C3.name }}</span>
           </div>
           <input type="text" class="form-control" v-model="prepareItem.c3" />
         </div>
@@ -79,15 +83,15 @@ export default {
       criterion: {
         C1: {
           name: "Price",
-          weight: 0.1
+          weight: 0.4
         },
         C2: {
           name: "Rate",
-          weight: 0.1
+          weight: 0.4
         },
         C3: {
           name: "Time",
-          weight: 0.1
+          weight: 0.2
         }
       },
       items: []
@@ -112,8 +116,6 @@ export default {
         this.prepareItem.c1 = "";
         this.prepareItem.c2 = "";
         this.prepareItem.c3 = "";
-        this.toggleModal;
-        this.toggleModal;
         this.$root.$emit("bv::toggle::modal", "modal-1", "#btnToggle");
         $("input").removeClass("is-invalid");
       } else {
