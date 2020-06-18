@@ -11,10 +11,10 @@
       </thead>
       <tbody>
         <tr v-for="(item,i) in items" :key="i">
-          <th scope="row">{{item.name}}</th>
-          <td>{{item.c1}}</td>
-          <td>{{item.c2}}</td>
-          <td>{{item.c3}}</td>
+          <th scope="row">{{item.title}}</th>
+          <td>{{item.time}}</td>
+          <td>{{item.rate}}</td>
+          <td>{{item.price}}</td>
         </tr>
       </tbody>
     </table>
@@ -31,28 +31,28 @@
           <div class="input-group-prepend">
             <span class="input-group-text">Name</span>
           </div>
-          <input type="text" class="form-control" v-model="prepareItem.name" />
+          <input type="text" class="form-control" v-model="prepareItem.title" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">{{criterion.C1.name}}</span>
           </div>
-          <input type="text" class="form-control" v-model="prepareItem.c1" />
+          <input type="text" class="form-control" v-model="prepareItem.time" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">{{criterion.C2.name}}</span>
           </div>
-          <input type="text" class="form-control" v-model="prepareItem.c2" />
+          <input type="text" class="form-control" v-model="prepareItem.rate" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
             <span class="input-group-text">{{criterion.C3.name}}</span>
           </div>
-          <input type="text" class="form-control" v-model="prepareItem.c3" />
+          <input type="text" class="form-control" v-model="prepareItem.price" />
         </div>
         <hr class="my-4" />
 
@@ -67,14 +67,16 @@
 
 <script>
 import $ from "jquery";
+import getData from "../actions/get";
+import postData from "../actions/post";
 export default {
   data() {
     return {
       prepareItem: {
         name: "",
-        c1: "",
-        c2: "",
-        c3: ""
+        rate: "",
+        price: "",
+        time: ""
       },
       criterion: {
         C1: {
@@ -93,26 +95,29 @@ export default {
       items: []
     };
   },
+  mixins: [getData, postData],
   components: {},
+  created() {
+    this.getData("items");
+  },
   methods: {
     addItem() {
       if (
-        this.prepareItem.name !== "" &&
-        this.prepareItem.c1 !== "" &&
-        this.prepareItem.c2 !== "" &&
-        this.prepareItem.c3 !== ""
+        this.prepareItem.title !== "" &&
+        this.prepareItem.price !== "" &&
+        this.prepareItem.rate !== "" &&
+        this.prepareItem.time !== ""
       ) {
-        this.items.push({
-          name: this.prepareItem.name,
-          c1: this.prepareItem.c1,
-          c2: this.prepareItem.c2,
-          c3: this.prepareItem.c3
+        this.postData("items", {
+          title: this.prepareItem.title,
+          price: this.prepareItem.price,
+          rate: this.prepareItem.rate,
+          time: this.prepareItem.time
         });
         this.prepareItem.name = "";
         this.prepareItem.c1 = "";
         this.prepareItem.c2 = "";
         this.prepareItem.c3 = "";
-        this.toggleModal;
         this.toggleModal;
         this.$root.$emit("bv::toggle::modal", "modal-1", "#btnToggle");
         $("input").removeClass("is-invalid");
