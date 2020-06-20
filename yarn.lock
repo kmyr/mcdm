@@ -5213,6 +5213,11 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+linear-algebra@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/linear-algebra/-/linear-algebra-3.1.4.tgz#e5dc0ab5ba1fbd23473209bf923d6238db78a56b"
+  integrity sha1-5dwKtbofvSNHMgm/kj1iONt4pWs=
+
 lines-and-columns@^1.1.6:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.1.6.tgz#1c00c743b433cd0a4e80758f7b64a57440d9ff00"
@@ -8032,6 +8037,13 @@ toposort@^1.0.0:
   version "1.0.7"
   resolved "https://registry.yarnpkg.com/toposort/-/toposort-1.0.7.tgz#2e68442d9f64ec720b8cc89e6443ac6caa950029"
   integrity sha1-LmhELZ9k7HILjMieZEOsbKqVACk=
+
+topsis@^1.3.2:
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/topsis/-/topsis-1.3.2.tgz#71a524b219c858128db08bb4860864e3f3be7d1d"
+  integrity sha512-6Zt4xfWz6g5i5XcOTWQgCVWhsnzaUOz7dCZ1Y9zCaQ7kA1i8QeH60nxCSJ+w5c0QJtOV7HRYPAKOUtMIeCqcng==
+  dependencies:
+    linear-algebra "^3.1.4"
 
 tough-cookie@^2.3.3, tough-cookie@~2.5.0:
   version "2.5.0"

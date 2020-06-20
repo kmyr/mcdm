@@ -10,8 +10,10 @@ export default {
           querySnapshot.forEach(doc => {
             doc.ref
               .update({
-                title: this.title,
-                description: this.description
+                title: this.editingItem.title,
+                rate: this.editingItem.rate,
+                time: this.editingItem.time,
+                price: this.editingItem.price
               })
               .then(() => {
                 location.reload();
