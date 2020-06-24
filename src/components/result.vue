@@ -25,12 +25,10 @@
       </tbody>
     </table>
 
-    <router-link
-      tag="button"
-      to="/"
+    <button
       class="btn btn-outline-warning"
       style="margin-left: 30px; font-size:20px;padding-top:0px"
-      exact
+      @click="startOver()"
     >
       <svg
         class="bi bi-arrow-left-circle"
@@ -53,7 +51,7 @@
           d="M11.5 8a.5.5 0 0 0-.5-.5H6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 .5-.5z"
         />
       </svg>
-    </router-link>
+    </button>
   </div>
 </template>
 
@@ -73,7 +71,12 @@ export default {
     this.getData("items", this.items);
     this.itemsToShow = this.$parent.$data.result;
   },
-  methods: {}
+  methods: {
+    startOver() {
+      this.$parent.$data.result = null;
+      this.$router.push("/");
+    }
+  }
 };
 </script>
 
