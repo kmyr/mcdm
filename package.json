@@ -14,7 +14,8 @@
     "firebase": "^7.15.1",
     "jquery": "^3.5.1",
     "topsis": "^1.3.2",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",

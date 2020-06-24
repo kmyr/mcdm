@@ -1,17 +1,17 @@
 <template>
   <div>
-    <table-component></table-component>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import table from "./components/table";
 export default {
-  components: {
-    "table-component": table
+  data() {
+    return {
+      result: null
+    };
   }
 };
 </script>
 
-<style>
-</style>
+<style></style>

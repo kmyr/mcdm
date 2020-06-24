@@ -4,18 +4,24 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Name</th>
-          <th scope="col">{{criterion.C1.name}}</th>
-          <th scope="col">{{criterion.C2.name}}</th>
-          <th scope="col">{{criterion.C3.name}}</th>
+          <template v-for="(cr, i) in criterions">
+            <th scope="col" :key="i">{{ cr.name }}</th>
+          </template>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item,i) in items" :key="i">
-          <th scope="row">{{item.title}}</th>
-          <td>{{item.time}}</td>
-          <td>{{item.rate}}</td>
-          <td>{{item.price}}</td>
+        <tr v-for="(item, i) in items" :key="i">
+          <th scope="row">{{ item.title }}</th>
+          <td>{{ item.c1 }}</td>
+          <td>{{ item.c2 }}</td>
+          <td>{{ item.c3 }}</td>
+          <td>{{ item.c4 }}</td>
+          <td>{{ item.c5 }}</td>
+          <td>{{ item.c6 }}</td>
+          <td>{{ item.c7 }}</td>
+          <td>{{ item.c8 }}</td>
+          <td>{{ item.c9 }}</td>
           <td>
             <button
               @click="deleteItem(i)"
@@ -95,6 +101,30 @@
             </svg>
           </span>
         </button>
+        <router-link
+          tag="button"
+          to="/setting"
+          class="btn btn-outline-warning"
+          style="margin-left: 30px; font-size:20px;padding-top:0px"
+        >
+          <svg
+            class="bi bi-gear-wide-connected"
+            width="1em"
+            height="1em"
+            viewBox="0 0 16 16"
+            fill="currentColor"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M8.932.727c-.243-.97-1.62-.97-1.864 0l-.071.286a.96.96 0 0 1-1.622.434l-.205-.211c-.695-.719-1.888-.03-1.613.931l.08.284a.96.96 0 0 1-1.186 1.187l-.284-.081c-.96-.275-1.65.918-.931 1.613l.211.205a.96.96 0 0 1-.434 1.622l-.286.071c-.97.243-.97 1.62 0 1.864l.286.071a.96.96 0 0 1 .434 1.622l-.211.205c-.719.695-.03 1.888.931 1.613l.284-.08a.96.96 0 0 1 1.187 1.187l-.081.283c-.275.96.918 1.65 1.613.931l.205-.211a.96.96 0 0 1 1.622.434l.071.286c.243.97 1.62.97 1.864 0l.071-.286a.96.96 0 0 1 1.622-.434l.205.211c.695.719 1.888.03 1.613-.931l-.08-.284a.96.96 0 0 1 1.187-1.187l.283.081c.96.275 1.65-.918.931-1.613l-.211-.205a.96.96 0 0 1 .434-1.622l.286-.071c.97-.243.97-1.62 0-1.864l-.286-.071a.96.96 0 0 1-.434-1.622l.211-.205c.719-.695.03-1.888-.931-1.613l-.284.08a.96.96 0 0 1-1.187-1.186l.081-.284c.275-.96-.918-1.65-1.613-.931l-.205.211a.96.96 0 0 1-1.622-.434L8.932.727zM8 12.997a4.998 4.998 0 1 0 0-9.995 4.998 4.998 0 0 0 0 9.996z"
+            />
+            <path
+              fill-rule="evenodd"
+              d="M7.375 8L4.602 4.302l.8-.6L8.25 7.5h4.748v1H8.25L5.4 12.298l-.8-.6L7.376 8z"
+            />
+          </svg>
+        </router-link>
 
         <span class="float-right">
           <button type="button" class="btn btn-success" @click="convertItems()">Convert</button>
@@ -111,24 +141,67 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{ criterion.C1.name }}</span>
+            <span class="input-group-text">{{ criterions[0].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="prepareItem.time" />
+          <input type="number" class="form-control" v-model="prepareItem.c1" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{ criterion.C2.name }}</span>
+            <span class="input-group-text">{{ criterions[1].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="prepareItem.rate" />
+          <input type="number" class="form-control" v-model="prepareItem.c2" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{ criterion.C3.name }}</span>
+            <span class="input-group-text">{{ criterions[2].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="prepareItem.price" />
+          <input type="number" class="form-control" v-model="prepareItem.c3" />
         </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[3].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="prepareItem.c4" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[4].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="prepareItem.c5" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[5].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="prepareItem.c6" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[6].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="prepareItem.c7" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[7].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="prepareItem.c8" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[8].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="prepareItem.c9" />
+        </div>
+
         <hr class="my-4" />
 
         <div class="d-flex flex-row-reverse bd-highlight mb-2" id="btnGroup">
@@ -146,24 +219,67 @@
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{ criterion.C1.name }}</span>
+            <span class="input-group-text">{{ criterions[0].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="editingItem.time" />
+          <input type="number" class="form-control" v-model="editingItem.c1" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{ criterion.C2.name }}</span>
+            <span class="input-group-text">{{ criterions[1].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="editingItem.rate" />
+          <input type="number" class="form-control" v-model="editingItem.c2" />
         </div>
 
         <div class="input-group">
           <div class="input-group-prepend">
-            <span class="input-group-text">{{ criterion.C3.name }}</span>
+            <span class="input-group-text">{{ criterions[2].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="editingItem.price" />
+          <input type="number" class="form-control" v-model="editingItem.c3" />
         </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[3].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="editingItem.c4" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[4].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="editingItem.c5" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[5].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="editingItem.c6" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[6].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="editingItem.c7" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[7].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="editingItem.c8" />
+        </div>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">{{ criterions[8].name }}</span>
+          </div>
+          <input type="number" class="form-control" v-model="editingItem.c9" />
+        </div>
+
         <hr class="my-4" />
 
         <div class="d-flex flex-row-reverse bd-highlight mb-2" id="btnGroup">
@@ -181,7 +297,6 @@ import getData from "../actions/get";
 import postData from "../actions/post";
 import deleteData from "../actions/delete";
 import updateData from "../actions/update";
-// import db from "../components/firebaseInit";
 
 export default {
   mixins: [getData, postData, deleteData, updateData],
@@ -189,68 +304,106 @@ export default {
     return {
       prepareItem: {
         title: "",
-        rate: "",
-        price: "",
-        time: ""
+        c1: "",
+        c2: "",
+        c3: "",
+        c4: "",
+        c5: "",
+        c6: "",
+        c7: "",
+        c8: "",
+        c9: ""
       },
       editingItem: {
         title: "",
-        rate: "",
-        price: "",
-        time: ""
-      },
-      criterion: {
-        C1: {
-          name: "Price",
-          weight: 0.4
-        },
-        C2: {
-          name: "Rate",
-          weight: 0.4
-        },
-        C3: {
-          name: "Time",
-          weight: 0.2
-        }
+        c1: "",
+        c2: "",
+        c3: "",
+        c4: "",
+        c5: "",
+        c6: "",
+        c7: "",
+        c8: "",
+        c9: ""
       },
       tableData: [],
-      currentItem: null
+      currentItem: null,
+      resultItems: []
     };
   },
   components: {},
   created() {
-    this.getData("items");
+    this.getData("items", this.items);
+    this.getCr("criterions", this.criterions);
   },
   methods: {
     updateItem(i) {
-      this.updateData(this.items[i].title, "items");
-    },
-    addItem() {
       if (
-        this.prepareItem.title !== "" &&
-        this.prepareItem.price !== "" &&
-        this.prepareItem.rate !== "" &&
-        this.prepareItem.time !== ""
+        this.editingItem.title !== "" &&
+        this.editingItem.c1 !== "" &&
+        this.editingItem.c2 !== "" &&
+        this.editingItem.c3 !== "" &&
+        this.editingItem.c4 !== "" &&
+        this.editingItem.c5 !== "" &&
+        this.editingItem.c6 !== "" &&
+        this.editingItem.c7 !== "" &&
+        this.editingItem.c8 !== "" &&
+        this.editingItem.c9 !== ""
       ) {
-        this.postData("items", {
-          title: this.prepareItem.title,
-          price: this.prepareItem.price,
-          rate: this.prepareItem.rate,
-          time: this.prepareItem.time
-        });
-        this.prepareItem.title = "";
-        this.prepareItem.price = "";
-        this.prepareItem.rate = "";
-        this.prepareItem.time = "";
-        this.newItemModal();
+        this.updateData(
+          this.items[i].title,
+          "items",
+          this.editingItem,
+          "title"
+        );
+        this.editItemModal();
         $("input").removeClass("is-invalid");
       } else {
-        $("input:text")
+        $("input")
           .filter(function() {
             return this.value == "";
           })
           .addClass("is-invalid");
-        $("input:text")
+        $("input")
+          .filter(function() {
+            return this.value !== "";
+          })
+          .removeClass("is-invalid");
+      }
+    },
+    addItem() {
+      if (
+        this.prepareItem.title !== "" &&
+        this.prepareItem.c1 !== "" &&
+        this.prepareItem.c2 !== "" &&
+        this.prepareItem.c3 !== "" &&
+        this.prepareItem.c4 !== "" &&
+        this.prepareItem.c5 !== "" &&
+        this.prepareItem.c6 !== "" &&
+        this.prepareItem.c7 !== "" &&
+        this.prepareItem.c8 !== "" &&
+        this.prepareItem.c9 !== ""
+      ) {
+        this.postData("items", this.prepareItem);
+        this.prepareItem.title = "";
+        this.prepareItem.c1 = "";
+        this.prepareItem.c2 = "";
+        this.prepareItem.c3 = "";
+        this.prepareItem.c4 = "";
+        this.prepareItem.c5 = "";
+        this.prepareItem.c6 = "";
+        this.prepareItem.c7 = "";
+        this.prepareItem.c8 = "";
+        this.prepareItem.c9 = "";
+        this.newItemModal();
+        $("input").removeClass("is-invalid");
+      } else {
+        $("input")
+          .filter(function() {
+            return this.value == "";
+          })
+          .addClass("is-invalid");
+        $("input")
           .filter(function() {
             return this.value !== "";
           })
@@ -264,19 +417,39 @@ export default {
       this.$root.$emit("bv::toggle::modal", "editItemModal", "#btnToggle");
       if (i !== undefined) {
         this.editingItem.title = this.items[i].title;
-        this.editingItem.rate = this.items[i].rate;
-        this.editingItem.price = this.items[i].price;
-        this.editingItem.time = this.items[i].time;
+        this.editingItem.c1 = this.items[i].c1;
+        this.editingItem.c2 = this.items[i].c2;
+        this.editingItem.c3 = this.items[i].c3;
+        this.editingItem.c4 = this.items[i].c4;
+        this.editingItem.c5 = this.items[i].c5;
+        this.editingItem.c6 = this.items[i].c6;
+        this.editingItem.c7 = this.items[i].c7;
+        this.editingItem.c8 = this.items[i].c8;
+        this.editingItem.c9 = this.items[i].c9;
         this.currentItem = i;
       }
+    },
+    deleteItem(i) {
+      this.postData("refresh", {});
+      this.deleteData("items", this.items[i].title, "title");
     },
     convertItems() {
       for (let i = 0; i < this.items.length; i++) {
         const item = this.items[i];
-        const resultData = [item.price, item.rate, item.time];
+        const resultData = [
+          item.c1,
+          item.c2,
+          item.c3,
+          item.c4,
+          item.c5,
+          item.c6,
+          item.c7,
+          item.c8,
+          item.c9
+        ];
         this.tableData.push(resultData);
       }
-      const cr = this.criterion;
+      const cr = this.criterions;
       const linearAlgebra = require("linear-algebra")();
       const Matrix = linearAlgebra.Matrix;
 
@@ -285,25 +458,64 @@ export default {
       let matrix = new Matrix(this.tableData);
       // m argument is the alternative matrix. Each row is an alternative and each column is a criterion.
 
-      let weights = [cr.C1.weight, cr.C2.weight, cr.C3.weight]; // This argument indicates the weights of each criteria.
-      let type = ["min", "min", "min"]; // This argument indicates if a criterion is beneficial or not.
+      let weights = [
+        cr[0].weight,
+        cr[1].weight,
+        cr[2].weight,
+        cr[3].weight,
+        cr[4].weight,
+        cr[5].weight,
+        cr[6].weight,
+        cr[7].weight,
+        cr[8].weight
+      ]; // This argument indicates the weights of each criteria.
+      let type = [
+        cr[0].type,
+        cr[1].type,
+        cr[2].type,
+        cr[3].type,
+        cr[4].type,
+        cr[5].type,
+        cr[6].type,
+        cr[7].type,
+        cr[8].type
+      ]; // This argument indicates if a criterion is beneficial or not.
 
       const returnItem = topsis.getBest(matrix, weights, type);
+      // Get information of best item
       console.log(returnItem);
       for (let i = 0; i < this.items.length; i++) {
         const target = this.items[i];
         if (
-          target.price == returnItem[0] &&
-          target.rate == returnItem[1] &&
-          target.time == returnItem[2]
+          target.c1 == returnItem[1] &&
+          target.c2 == returnItem[0] &&
+          target.c3 == returnItem[2] &&
+          target.c4 == returnItem[3] &&
+          target.c5 == returnItem[4] &&
+          target.c6 == returnItem[5] &&
+          target.c7 == returnItem[6] &&
+          target.c8 == returnItem[7] &&
+          target.c9 == returnItem[8]
         ) {
+          this.resultItems = [
+            {
+              title: target.title,
+              c1: target.c1,
+              c2: target.c2,
+              c3: target.c3,
+              c4: target.c4,
+              c5: target.c5,
+              c6: target.c6,
+              c7: target.c7,
+              c8: target.c8,
+              c9: target.c9
+            }
+          ];
           console.log(target.title);
+          this.$parent.$data.result = this.resultItems;
+          this.$router.push("/result");
         }
       }
-    },
-    deleteItem(i) {
-      this.postData("refresh", {});
-      this.deleteData("items", this.items[i].title);
     }
   }
 };
