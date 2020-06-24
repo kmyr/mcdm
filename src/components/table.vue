@@ -487,8 +487,8 @@ export default {
       for (let i = 0; i < this.items.length; i++) {
         const target = this.items[i];
         if (
-          target.c1 == returnItem[1] &&
-          target.c2 == returnItem[0] &&
+          target.c1 == returnItem[0] &&
+          target.c2 == returnItem[1] &&
           target.c3 == returnItem[2] &&
           target.c4 == returnItem[3] &&
           target.c5 == returnItem[4] &&
