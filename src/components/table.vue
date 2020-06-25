@@ -199,7 +199,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">{{ criterions[8].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="prepareItem.c9" disabled />
+          <input type="number" class="form-control" v-model="prepareItem.c9" />
         </div>
 
         <hr class="my-4" />
@@ -277,7 +277,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text">{{ criterions[8].name }}</span>
           </div>
-          <input type="number" class="form-control" v-model="editingItem.c9" disabled />
+          <input type="number" class="form-control" v-model="editingItem.c9" />
         </div>
 
         <hr class="my-4" />
@@ -312,7 +312,7 @@ export default {
         c6: "",
         c7: "",
         c8: "",
-        c9: "0" //THIS IS DISABLED INPUT
+        c9: "" //THIS IS DISABLED INPUT
       },
       editingItem: {
         title: "",
@@ -324,7 +324,7 @@ export default {
         c6: "",
         c7: "",
         c8: "",
-        c9: "0" //THIS IS DISABLED INPUT
+        c9: "" //THIS IS DISABLED INPUT
       },
       tableData: [],
       currentItem: null,
@@ -511,6 +511,7 @@ export default {
               c9: target.c9
             }
           ];
+          console.log(this.tableData);
           console.log(target.title);
           this.$parent.$data.result = this.resultItems;
           this.$router.push("/result");
